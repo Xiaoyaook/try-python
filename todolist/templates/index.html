@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{{ url_for('index') }}" method=post>
+    <p>添加待做事项:</p>
+    <textarea name=content rows=2 cols=20></textarea>
+    <input type=submit value=submit>
+</form>
+
+<ul>
+    {% if todos %}
+    {% for todo in todos %}
+    <li><a href="/list/{{ todo.task }}">{{todo.task}}</a></li>
+    {% endfor %}
+    {% else %}
+    <p>还没有任何待做事项</p>
+    {% endif %}
+</ul>
+{% endblock %}
